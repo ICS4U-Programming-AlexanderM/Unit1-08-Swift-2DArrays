@@ -22,31 +22,31 @@ func randomNormalValue(mean: Double, standardDeviation: Double) -> Int {
 // This function accepts two arrays and returns a 2D array.
 func generateMarks(students: [String], assignments: [String]) -> [[String]] {
   // Declare variables and arrays for function.
-	var studentMarks = [[String]](repeating: [String](repeating: "", count: assignments.count + 1), count: students.count + 1)
-	var counter = 0
-	var num = 0
+  var studentMarks = [[String]](repeating: [String](repeating: "", count: assignments.count + 1), count: students.count + 1)
+  var counter = 0
+  var num = 0
 
   // Fill out header row.
-	studentMarks[0][0] = "Name"
-	for position in 0..<assignments.count {
+  studentMarks[0][0] = "Name"
+  for position in 0..<assignments.count {
     studentMarks[0][position + 1] = assignments[position]
-	}
+  }
 
   // Generate marks and assign them to students.
-	for student in students {
-		studentMarks[counter + 1][0] = student
-		for counter2 in 1...assignments.count {
-			// Ensure that only numbers between 0 and 100 are generated.
-			repeat {
-				num = randomNormalValue(mean: 75, standardDeviation: 10)
-			} while num < 0 || num > 100
-			studentMarks[counter + 1][counter2] = String(num)
-		}
-		counter = counter + 1
-	}
+  for student in students {
+    studentMarks[counter + 1][0] = student
+    for counter2 in 1...assignments.count {
+      // Ensure that only numbers between 0 and 100 are generated.
+      repeat {
+        num = randomNormalValue(mean: 75, standardDeviation: 10)
+      } while num < 0 || num > 100
+      studentMarks[counter + 1][counter2] = String(num)
+    }
+    counter = counter + 1
+  }
 
-	// Return 2D array.
-	return studentMarks
+  // Return 2D array.
+  return studentMarks
 }
 
 // Read in student names from students.txt
